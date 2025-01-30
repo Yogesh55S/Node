@@ -4,8 +4,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"npx @tailwindcss/cli -i ./views/input.css -o ./public/output.css --watch",
-    "start":"nodemon server.js & npm run dev"
+    "dev": "npx @tailwindcss/cli -i ./views/input.css -o ./public/output.css --watch",
+    "start": "nodemon server.js & npm run dev"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "@tailwindcss/cli": "^4.0.1",
+    "ejs": "^3.1.10",
     "express": "^4.21.2",
     "tailwindcss": "^4.0.1"
   },
