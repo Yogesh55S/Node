@@ -3,7 +3,7 @@ const path = require("path");
 const app = express();
 
 const userRouter = require("./user");
-const hostRouter = require("./host");
+const {hostRouter} = require("./host");
 const rootDir = require("./utils/path");
 
 

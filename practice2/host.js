@@ -6,9 +6,14 @@ const rootDir = require("./utils/path")
 hostRouter.get("/add-home",(req,res,next)=>{
   res.sendfile(path.join(rootDir, "views", "register.html"));
 })
+const registernames = [];
+const registerhomes = [];
 
 hostRouter.post("/add-home",(req,res,next)=>{
-  console.log(req.body);
+registernames.push({namee : req.body.namee});
+registerhomes.push({housename: req.body.housename});
   res.sendfile(path.join(rootDir, "views", "done.html"));
 })
-module.exports = hostRouter;
+exports.hostRouter = hostRouter;
+exports.registernames = registernames;
+exports.registerhomes= registerhomes;
