@@ -17,7 +17,7 @@ app.use(express.static(path.join(rootDir, 'public')));
 
 app.use((req,res,next)=>{
   res.status(404).render('not');
-});
+} );
 PORT = 3001;
 app.listen(PORT, ()=>{
   console.log(`Server is running on port  http://localhost:${PORT}`);

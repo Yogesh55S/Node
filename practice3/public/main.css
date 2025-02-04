@@ -26,11 +26,3 @@ a:hover{
   width: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-#housename{
-text-decoration: none;
-list-style: none;
-color:white;
-font-size: 20px;
-left: 0;
-}

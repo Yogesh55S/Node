@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register House</title>
+  <link rel="stylesheet" href="output.css">
+</head>
+<body>
+  <header class="bg-red-500 text-white p-4 shadow-md">
+    <nav class="container mx-auto flex justify-between items-center">
+      <ul class="flex space-x-4">
+        <li>
+          <a href="/" class="hover:bg-red-400 py-2 px-4 rounded transition duration-300">Home Page</a>
+        </li>
+        <li>
+          <a href="/add-home" class="hover:bg-red-400 py-2 px-4 rounded transition duration-300">Register Page</a>
+        </li>
+        <li>
+          <a href="/house" class="bg-red-400 py-2 px-4 rounded transition duration-300">House Page</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-full">
+    <h2 class="text-5xl text-gray-800 font-bold text-center mb-6">Your Register House is Here :- </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <% registerhomes.forEach(added => { %>
+        <div class="border border-gray-300 rounded-lg p-4 shadow-md">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800"><strong>House Name:</strong><%= added.housename %></h3>
+            <span class="text-yellow-500 font-bold text-lg"><%= added.Rating %> ★</span>
+          </div>
+          <p class="text-gray-700 mb-2"><strong>Price:</strong> <%= added.Price %></p>
+          <p class="text-gray-700"><strong>Location:</strong> <%= added.Location %></p>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+      
+ 
+
+  </main>
+  
+</body>
+</html>
