@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+const rootDir = require("../utils/path");
 const registerhomes = [];
 
 module.exports = class Home {
@@ -9,8 +12,18 @@ module.exports = class Home {
   }
   save(){
     registerhomes.push(this);
+    const homedata = path.join(rootDir,"Data","Home.json");
+    fs.writeFileSync(homedata,JSON.stringify(registerhomes), error =>{
+      console.log("file writing concluded",error);
+    });
   }
-  static fetchAll(){
-    return registerhomes;
+  static fetchAll(callback){
+    const homedata = path.join(rootDir,"Data","Home.json");
+    const fileContent = fs.readFile(homedata,(err,data)=>{
+      if(err){
+        return [];
+    }
+    return JSON.parse(data);
+  });
   }
 }
