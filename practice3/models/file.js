@@ -1,6 +1,6 @@
 const registerhomes = [];
 
-module.exports = class files {
+module.exports = class Home {
   constructor(housename,Price,Location,Rating){
     this.housename = housename;
     this.Price = Price;
