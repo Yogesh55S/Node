@@ -11,11 +11,13 @@ module.exports = class Home {
     this.Rating = Rating;
   }
   save(){
-    registerhomes.push(this);
+    Home.fetchAll((registerhomes) =>{
+      registerhomes.push(this);
     const homedata = path.join(rootDir,"Data","Home.json");
     fs.writeFileSync(homedata,JSON.stringify(registerhomes), error =>{
       console.log("file writing concluded",error);
     });
+    })
   }
 
   static fetchAll(callback){

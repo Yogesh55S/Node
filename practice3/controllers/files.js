@@ -9,8 +9,9 @@
 
   const registerhomes =Home.fetchAll((registerhomes)=>{
      res.render('added',{registerhomes : registerhomes});
+     console.log(registerhomes);
   });
-  console.log(registerhomes);
+ 
    
   };
   //exports.registerhomes = registerhomes;  
