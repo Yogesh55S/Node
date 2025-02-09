@@ -7,8 +7,10 @@
   const home = new Home (housename,Price,Location,Rating);
   home.save();
 
-  const registerhomes =Home.fetchAll();
+  const registerhomes =Home.fetchAll((registerhomes)=>{
+     res.render('added',{registerhomes : registerhomes});
+  });
   console.log(registerhomes);
-    res.render('added',{registerhomes : registerhomes});
+   
   };
   //exports.registerhomes = registerhomes;  

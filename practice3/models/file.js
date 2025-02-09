@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const rootDir = require("../utils/path");
-const registerhomes = [];
+let registerhomes = [];
 
 module.exports = class Home {
   constructor(housename,Price,Location,Rating){
@@ -17,13 +17,12 @@ module.exports = class Home {
       console.log("file writing concluded",error);
     });
   }
+
   static fetchAll(callback){
     const homedata = path.join(rootDir,"Data","Home.json");
     const fileContent = fs.readFile(homedata,(err,data)=>{
-      if(err){
-        return [];
-    }
-    return JSON.parse(data);
+      callback(!err ? JSON.parse(data):[]);
+    
   });
   }
 }
