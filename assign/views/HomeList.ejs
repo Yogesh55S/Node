@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home List</title>
+ <link rel="stylesheet" href="output.css">
+</head>
+<body>
+  <%-include('partials/navbar')%>
+  
+    <div class="mt-10">
+      <h2 class="text-gray-800 font-bold text-xl">House List</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <% registerhomes.forEach(function(house) { %>
+          <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2"><%= house.houseName %></div>
+              <p class="text-gray-700 text-base">Price: $<%= house.price %></p>
+              <p class="text-gray-700 text-base">Location: <%= house.location %></p>
+              <p class="text-gray-700 text-base">Rating: <%= house.rating %> / 5</p>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

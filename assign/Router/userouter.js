@@ -4,7 +4,7 @@ const rootdir = require("../utils/path");
 const userRouter = express.Router();
 
 userRouter.get("/",(req,res,next)=>{
-  console.log("UserRouter succesfully connected:-");
+  console.log("Now You are on Home page");
   res.render('Home');
 });
 module.exports = userRouter;
