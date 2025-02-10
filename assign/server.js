@@ -15,6 +15,13 @@ app.use(express.json());
 app.use( userRouter);
 app.use( hostRouter);
 app.use(express.static(path.join(rootDir, 'public')));
+
+
+//--- 404 page
+app.use((req,res,next)=>{
+  res.status(404).render('not');
+});
+
 //----Server
 const PORT = 3001;
 app.listen(PORT,()=>{
