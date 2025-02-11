@@ -1,6 +1,6 @@
 const path = require("path");
 const express  = require("express");
-const rootdir = require("../utils/path");
+//const rootdir = require("../utils/path");
 const userRouter = express.Router();
 
 userRouter.get("/",(req,res,next)=>{

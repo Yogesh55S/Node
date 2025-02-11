@@ -14,7 +14,7 @@ hostRouter.post("/add-page",(req,res,next)=>{
 
 hostRouter.get("/list-page",(req,res,next)=>{
   console.log("Now you are on Home List Page");
-  res.render('HomeList',files.addhome);
+  //res.render('HomeList',files.addhome);
 });
 
 hostRouter.get("/book-page",(req,res,next)=>{

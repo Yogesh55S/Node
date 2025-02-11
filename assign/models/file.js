@@ -1,10 +1,10 @@
 const path = require("path");
 const fs = require("fs");
 const rootDir = require("../utils/path"); // Ensure this is correctly imported
-
+let registerhomes = [];
 module.exports = class Home {
-  constructor(houseName, price, location, rating, imageUrl) {
-    this.houseName = houseName;
+  constructor(housename, price, location, rating, imageUrl) {
+    this.housename = housename;
     this.price = price;
     this.location = location;
     this.rating = rating;
@@ -27,12 +27,8 @@ module.exports = class Home {
 
   static fetchAll(callback) {
     const homedata = path.join(rootDir, "Data", "Home.json");
-    fs.readFile(homedata, (err, data) => {
-      if (err) {
-        callback([]);
-      } else {
-        callback(JSON.parse(data));
-      }
+    const fileContent=fs.readFile(homedata, (err, data) => {
+     callback(!err ? JSON.parse(data):[]);
     });
   }
 }

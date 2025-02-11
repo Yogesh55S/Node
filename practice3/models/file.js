@@ -14,7 +14,7 @@ module.exports = class Home {
     Home.fetchAll((registerhomes) =>{
       registerhomes.push(this);
     const homedata = path.join(rootDir,"Data","Home.json");
-    fs.writeFileSync(homedata,JSON.stringify(registerhomes), error =>{
+    fs.writeFile(homedata,JSON.stringify(registerhomes), error =>{
       console.log("file writing concluded",error);
     });
     })
