@@ -14,14 +14,18 @@ exports.addhome = (req,res,next)=>{
   const home = new Home (housename,price,location,rating,imageUrl);
   home.save();
 
-  const registerhomes = Home.fetchAll();
-    res.render('Homelist',{registerhomes:registerhomes});
+  const registerhomes = Home.fetchAll((registerhomes)=>{
+     res.render('Homelist',{registerhomes:registerhomes});
     console.log(registerhomes);
+  });
+   
   }
 //--List -page
 exports.list = (req,res,next)=>{
- const registerhomes = Home.fetchAll();
- res.render('HomeList',{registerhomes:registerhomes});
+ const registerhomes = Home.fetchAll((registerhomes)=>{
+  res.render('HomeList',{registerhomes:registerhomes});
+ });
+ 
 }
 //--Booking Page--
 exports.booky = (req,res,next)=>{

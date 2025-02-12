@@ -23,7 +23,6 @@ module.exports = class Home {
     const homedata = path.join(rootDir,"Data","Home.json");
     const fileContent = fs.readFile(homedata,(err,data)=>{
       callback(!err ? JSON.parse(data):[]);
-    
   });
   }
 }
