@@ -9,13 +9,15 @@ module.exports = class Home {
     this.location = location;
     this.rating = rating;
     this.imageUrl = imageUrl;
-  }
+  } 
 
  save(){
-  registerhomes.push(this);
+  Home.fetchAll(registerhomes=>{
+    registerhomes.push(this);
   const homedata = path.join(rootDir,"Data","Home.json");
   fs.writeFile(homedata,JSON.stringify(registerhomes), error =>{
     console.log("file writing concluded",error);
+  });
   });
    }
  
@@ -24,5 +26,5 @@ module.exports = class Home {
      const fileContent = fs.readFile(homedata,(err,data)=>{
        callback(!err ? JSON.parse(data):[]);
    });
-   }
+   } 
 }

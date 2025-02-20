@@ -5,6 +5,6 @@ const userRouter = express.Router();
 
 userRouter.get("/",(req,res,next)=>{
   console.log("Now You are on Home page");
-  res.render('Home');
+  res.render('Host/Home');
 });
 module.exports = userRouter;
