@@ -12,11 +12,12 @@ exports.addhome = (req,res,next)=>{
   home.save();
 
   const registerhomes = Home.fetchAll((registerhomes)=>{
-     res.render('Store/HomeList',{registerhomes:registerhomes});
+     res.render('Host/Homedit',{registerhomes:registerhomes});
     console.log(registerhomes);
   });
   }
 exports.list=(req,res,next)=>{
-  console.log("Now you are in House List Page");
-res.render('Store/HomeList');
+  const registerhomes = Home.fetchAll((registerhomes)=>{
+    res.render('Host/Homedit',{registerhomes:registerhomes});
+ });
 }

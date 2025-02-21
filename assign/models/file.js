@@ -16,15 +16,22 @@ module.exports = class Home {
     registerhomes.push(this);
   const homedata = path.join(rootDir,"Data","Home.json");
   fs.writeFile(homedata,JSON.stringify(registerhomes), error =>{
-    console.log("file writing concluded",error);
   });
   });
    }
  
-   static fetchAll(callback){
-     const homedata = path.join(rootDir,"Data","Home.json");
-     const fileContent = fs.readFile(homedata,(err,data)=>{
-       callback(!err ? JSON.parse(data):[]);
-   });
-   } 
+   static fetchAll(callback) {
+    const homedata = path.join(rootDir, "Data", "Home.json");
+    fs.readFile(homedata, "utf-8", (err, data) => {
+        if (err) {
+            callback([]); 
+        } else {
+            try {
+                callback(JSON.parse(data));
+            } catch (parseError) {
+                callback([]);
+            }
+        }
+    });
+}
 }

@@ -5,6 +5,6 @@ const files = require("../controller/hostcontroller");
 
 hostRouter.get("/add-page",files.gethome);
 hostRouter.post("/add-page",files.addhome);
-hostRouter.get("/home-list",files.list);
+hostRouter.get("/home-edit",files.list);
 module.exports = hostRouter;
- 
+  

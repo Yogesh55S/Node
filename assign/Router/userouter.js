@@ -5,5 +5,6 @@ const files = require("../controller/storecontroller");
 
 userRouter.get("/",files.home);
 userRouter.get("/book-page",files.booky);
-
-module.exports = userRouter;
+userRouter.get("/fav-page",files.fav);
+userRouter.get("/home-list",files.list);
+module.exports = userRouter; 
