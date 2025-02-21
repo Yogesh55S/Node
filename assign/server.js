@@ -19,7 +19,7 @@ app.use(express.static(path.join(rootDir, 'public')));
 
 //--- 404 page
 app.use((req,res,next)=>{
-  res.status(404).render('not');
+  res.status(404).render('Store/not');
 });
 
 //----Server

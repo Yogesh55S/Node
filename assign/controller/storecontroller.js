@@ -20,3 +20,8 @@ exports.fav = (req,res,next)=>{
   console.log("Now are on Fav Page");
   res.render('Store/fav'); 
 }
+exports.getDetails = (req,res,next)=>{
+ const HomeId = req.params.HomeId;
+ console.log(HomeId);
+ res.render("Store/HomeList");
+ }
