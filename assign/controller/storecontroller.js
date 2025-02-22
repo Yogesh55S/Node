@@ -21,7 +21,12 @@ exports.fav = (req,res,next)=>{
   res.render('Store/fav'); 
 }
 exports.getDetails = (req,res,next)=>{
- const HomeId = req.params.HomeId;
- console.log(HomeId);
- res.render("Store/HomeList");
+ const homeId = req.params.homeId;
+ console.log("Home Id is -> ",homeId);
+ Home.findById(homeId, house=>{
+  console.log("Home Details",house);
+ })
+ res.render("Store/HomeDetails",{
+  house:this.house,
+ });
  }

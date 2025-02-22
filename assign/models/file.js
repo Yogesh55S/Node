@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const rootDir = require("../utils/path"); 
+const homedata = path.join(rootDir,"Data","Home.json");
 let registerhomes = [];
 module.exports = class Home {
   constructor(housename, price, location, rating, imageUrl) {
@@ -15,14 +16,12 @@ module.exports = class Home {
     this.id = Math.random().toString();
   Home.fetchAll(registerhomes=>{
     registerhomes.push(this);
-  const homedata = path.join(rootDir,"Data","Home.json");
   fs.writeFile(homedata,JSON.stringify(registerhomes), error =>{
   });
   });
    }
  
    static fetchAll(callback) {
-    const homedata = path.join(rootDir, "Data", "Home.json");
     fs.readFile(homedata, "utf-8", (err, data) => {
         if (err) {
             callback([]); 
@@ -35,4 +34,11 @@ module.exports = class Home {
         }
     });
 }
+static  findById(homeId,callback){
+this.fetchAll(Home =>{
+  const homefound = Home.find(house => house.id == homeId);
+callback(homefound);
+})
 }
+};
+
