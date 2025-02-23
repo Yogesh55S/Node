@@ -4,19 +4,19 @@
     <%- include('../partials/navbar') %>
     
     <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-6xl">
-        <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
+        <h2 class="text-3xl text-red-500 font-bold text-center mb-12">
             Details of <%= house.housename %>
         </h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="rounded-lg overflow-hidden">
-                <img src="<%= house.imageUrl %>" alt="<%= house.housename %>" class="w-full h-96 object-cover">
+                <img src="<%= house.imageUrl %>" alt="<%= house.housename %>" class="w-30 h-40 object-cover">
             </div>
             
             <div class="space-y-6">
                 <div class="border-b pb-4">
-                    <h3 class="text-2xl font-semibold mb-2">Description</h3>
-                    <p class="text-gray-600"><%= house.description %></p>
+                    <h3 class="text-2xl font-semibold mb-2">House Name</h3>
+                    <p class="text-gray-600"><%= house.housename%></p>
                 </div>
 
                 <div class="border-b pb-4">
@@ -43,8 +43,8 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <a class="bg-teal-400 p-2 rounded" href="/HomeList">Back to List</a>
-                    <button class="bg-green-500 p-2 rounded">Book</button>
+                    <a class="bg-blue-400 p-4 rounded" href="/home-list">Back to List</a>
+                    <button class="bg-green-500 p-4 rounded">Book</button>
                 </div>
             </div>
         </div>
