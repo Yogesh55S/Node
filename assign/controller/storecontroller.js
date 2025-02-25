@@ -17,7 +17,7 @@ exports.booky = (req,res,next)=>{
   res.render('Store/booky'); 
 }
 exports.fav = (req,res,next)=>{
-  Fav.getfav((favourite)=>{
+  favmodel.getfav((favourite)=>{
     Home.fetchAll((registerhomes)=>{
      const favHomes= registerhomes.filter(house => Fav.includes(house.id));
       res.render('Store/fav',{favHomes:favHomes});
