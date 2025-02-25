@@ -1,5 +1,5 @@
 const Home = require("../models/file");
-
+const favmodel = require("../models/favmodel");
 exports.home=(req,res,next)=>{
   console.log("Now You are on Home page");
   res.render('Host/Home');
@@ -17,8 +17,23 @@ exports.booky = (req,res,next)=>{
   res.render('Store/booky'); 
 }
 exports.fav = (req,res,next)=>{
-  console.log("Now are on Fav Page");
-  res.render('Store/fav'); 
+  Fav.getfav((favourite)=>{
+    Home.fetchAll((registerhomes)=>{
+     const favHomes= registerhomes.filter(house => Fav.includes(house.id));
+      res.render('Store/fav',{favHomes:favHomes});
+  });
+});
+}
+
+exports.addfav=(req,res,next)=>{
+  favmodel.AddToFav(req.body.id, error =>{
+    if(error){
+      console.log("error comes",error);
+    } 
+     res.redirect("/fav-page");
+  })
+
+
 }
 exports.getDetails = (req,res,next)=>{
  const homeId = req.params.homeId;
@@ -33,5 +48,4 @@ exports.getDetails = (req,res,next)=>{
   });
  
  }});
- 
  }
