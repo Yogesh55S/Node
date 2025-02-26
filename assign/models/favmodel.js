@@ -2,7 +2,6 @@ const path = require("path");
 const fs = require("fs");
 const rootDir = require("../utils/path"); 
 const favdata = path.join(rootDir,"Data","Fav.json");
-
 module.exports = class Fav {
 
   static AddToFav(homeId,callback){
