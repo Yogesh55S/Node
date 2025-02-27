@@ -9,8 +9,9 @@
           <div class="text-center mb-4">
             <h1 class="text-gray-800 font-bold text-2xl"><%= editing ? "Edit" :" Register" %>House</h1>
           </div>
-          <form action="/<%= editing ? "Homedit" :" addpage" %>" method="POST">
+          <form action="/<%= editing ? "Homedit" :" Edit-Home" %>" method="POST">
             <div class="mb-4">
+              <input type="hidden" name="id" value="<%= editing ? house.id :'' %>">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="houseName">House Name</label>
               <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="housename" placeholder="Enter house name" value="<%= editing ? house.housename :'' %>">
             </div>

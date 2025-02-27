@@ -13,9 +13,17 @@ module.exports = class Home {
   } 
 
  save(){
-    this.id = Math.random().toString();
+  
   Home.fetchAll(registerhomes=>{
-    registerhomes.push(this);
+  if(this.id){
+    registerhomes= registerhomes.map(house=>
+      house.id === this.id ? this : house)
+  }else{
+this.id = Math.random().toString(); 
+registerhomes.push(this);
+  }
+    
+   
   fs.writeFile(homedata,JSON.stringify(registerhomes), error =>{
   });
   });

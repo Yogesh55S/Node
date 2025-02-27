@@ -34,8 +34,16 @@ exports.addhome = (req,res,next)=>{
   });
   }
   
+  exports.Postedithome = (req,res,next)=>{
+    const {id,housename,price,location,rating,imageUrl} = req.body;
+    const home = new Home (housename,price,location,rating,imageUrl);
+    house.id = id;
+    home.save();
+    res.redirect("/Host/Homedit");
+    }
+
 exports.list=(req,res,next)=>{
   const registerhomes = Home.fetchAll((registerhomes)=>{
-    res.render('Host/Homedit',{registerhomes:registerhomes});
+    res.render('/Host/Homedit',{registerhomes:registerhomes});
  });
 }
