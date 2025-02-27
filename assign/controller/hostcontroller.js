@@ -3,8 +3,25 @@ const Home = require("../models/file");
 //--That is for Home page rendering
 exports.gethome=(req,res,next)=>{
   console.log("Now you are on Add Page");
-    res.render('Host/addpage');
+    res.render('Host/Edit-Home',{
+      editing:false,
+    });
   }
+
+  exports.getedithome=(req,res,next)=>{
+    const homeId = req.params.homeId;
+    const editing = req.query.editing === 'true';
+    Home.findById(homeId,house=>{
+      if(!house){
+        console.log("home not found");
+        res.redirect("Host/Homedit");
+      }
+      console.log(homeId,editing,house);
+      res.render('Host/Edit-Home', {
+        house:house,
+        editing:editing,});
+    })
+    }
 //---Add-page
 exports.addhome = (req,res,next)=>{
   const {housename,price,location,rating,imageUrl} = req.body;
@@ -16,6 +33,7 @@ exports.addhome = (req,res,next)=>{
     console.log(registerhomes);
   });
   }
+  
 exports.list=(req,res,next)=>{
   const registerhomes = Home.fetchAll((registerhomes)=>{
     res.render('Host/Homedit',{registerhomes:registerhomes});
