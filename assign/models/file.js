@@ -13,7 +13,6 @@ module.exports = class Home {
   } 
 
  save(){
-  
   Home.fetchAll(registerhomes=>{
   if(this.id){
     registerhomes= registerhomes.map(house=>
@@ -22,8 +21,6 @@ module.exports = class Home {
 this.id = Math.random().toString(); 
 registerhomes.push(this);
   }
-    
-   
   fs.writeFile(homedata,JSON.stringify(registerhomes), error =>{
   });
   });
