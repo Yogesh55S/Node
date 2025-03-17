@@ -12,19 +12,26 @@ module.exports = class Home {
     this.imageUrl = imageUrl;
   } 
 
- save(){
-  Home.fetchAll(registerhomes=>{
-  if(this.id){
-    registerhomes= registerhomes.map(house=>
-      house.id === this.id ? this : house)
-  }else{
-this.id = Math.random().toString(); 
-registerhomes.push(this);
-  }
-  fs.writeFile(homedata,JSON.stringify(registerhomes), error =>{
+ save() {
+  Home.fetchAll(registerhomes => {
+    if (this.id) {
+      // Update existing house
+      const existingIndex = registerhomes.findIndex(house => house.id === this.id);
+      if (existingIndex >= 0) {
+        registerhomes[existingIndex] = this;
+      }
+    } else {
+      // Add new house
+      this.id = Math.random().toString();
+      registerhomes.push(this);
+    }
+    fs.writeFile(homedata, JSON.stringify(registerhomes), error => {
+      if (error) {
+        console.error("Error saving data:", error);
+      }
+    });
   });
-  });
-   }
+}
  
    static fetchAll(callback) {
     fs.readFile(homedata, "utf-8", (err, data) => {
@@ -45,5 +52,10 @@ this.fetchAll(Home =>{
 callback(homefound);
 })
 }
-};
-
+static  deleteById(homeId,callback){
+  this.fetchAll(Home =>{
+    Home = Home.filter(house => house.id !== homeId);
+    fs.writeFile(homedata, JSON.stringify(Home), callback);
+  })
+  }
+}

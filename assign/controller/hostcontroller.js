@@ -39,7 +39,7 @@ exports.addhome = (req,res,next)=>{
     const home = new Home (housename,price,location,rating,imageUrl);
     home.id = id;
     home.save();
-    res.redirect("/Host/Homedit");
+    res.redirect("/home-edit");
     }
 
 exports.list=(req,res,next)=>{
@@ -47,3 +47,14 @@ exports.list=(req,res,next)=>{
     res.render('Host/Homedit',{registerhomes:registerhomes});
  }); 
 }
+exports.deletehome = (req,res,next)=>{
+  const homeId = req.params.homeId;
+  console.log(homeId);
+  Home.deleteById(homeId,error=>{
+    if(error){
+      console.log("error",error);
+    } 
+     res.redirect("/home-edit");
+  })
+
+  }

@@ -34,6 +34,15 @@ exports.addfav=(req,res,next)=>{
 
 
 }
+exports.removefav=(req,res,next)=>{
+  const homeId = req.params.homeId;
+  favmodel.deleteById(homeId,error=>{
+    if(error){
+      console.log("error are there",error);
+    }
+    res.redirect("/fav-page");
+  })
+}
 exports.getDetails = (req,res,next)=>{
  const homeId = req.params.homeId;
  console.log("Home Id is -> ",homeId);

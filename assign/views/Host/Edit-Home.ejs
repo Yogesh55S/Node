@@ -9,7 +9,7 @@
           <div class="text-center mb-4">
             <h1 class="text-gray-800 font-bold text-2xl"><%= editing ? "Edit" :" Register" %>House</h1>
           </div> 
-          <form action="/Host/<%= editing ? "Homedit" :" Edit-Home" %>" method="POST">
+          <form action="/edit-home" method="POST">
             <div class="mb-4">
               <input type="hidden" name="id" value="<%= editing ? house.id :'' %>">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="houseName">House Name</label>
