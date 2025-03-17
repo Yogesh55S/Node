@@ -39,7 +39,7 @@ exports.addhome = (req,res,next)=>{
     const home = new Home (housename,price,location,rating,imageUrl);
     home.id = id;
     home.save();
-    res.redirect("Host/Homedit");
+    res.redirect("/Host/Homedit");
     }
 
 exports.list=(req,res,next)=>{

@@ -7,6 +7,6 @@ hostRouter.get("/add-page",files.gethome);
 hostRouter.post("/add-page",files.addhome);
 hostRouter.get("/home-edit",files.list);
 hostRouter.get("/edit-home/:homeId",files.getedithome);
-hostRouter.post("/Edit-Home",files.Postedithome);
+hostRouter.post("/edit-home",files.Postedithome);
 module.exports = hostRouter;
   
