@@ -11,7 +11,7 @@ exports.gethome=(req,res,next)=>{
   exports.getedithome=(req,res,next)=>{
     const homeId = req.params.homeId;
     const editing = req.query.editing === 'true';
-    Home.findById(homeId,house=>{
+    Home.findById(homeId).then( house=>{
       if(!house){
         console.log("home not found");
        return  res.redirect("Host/Homedit");
@@ -30,7 +30,7 @@ exports.addhome = (req,res,next)=>{
     console.log("home saved")
   });
 
-  const registerhomes = Home.fetchAll((registerhomes)=>{
+   Home.fetchAll().then(registerhomes=>{
      res.render('/Host/Homedit',{registerhomes:registerhomes});
     console.log(registerhomes);
   });
@@ -45,7 +45,7 @@ exports.addhome = (req,res,next)=>{
     }
 
 exports.list=(req,res,next)=>{
-  const registerhomes = Home.fetchAll((registerhomes)=>{
+   Home.fetchAll().then(registerhomes=>{
     res.render('Host/Homedit',{registerhomes:registerhomes});
  }); 
 }

@@ -6,7 +6,7 @@ exports.home=(req,res,next)=>{
 }
 //--List -page
 exports.list = (req,res,next)=>{
- const registerhomes = Home.fetchAll((registerhomes)=>{
+ Home.fetchAll().then(registerhomes=>{
   res.render('Store/HomeList',{registerhomes:registerhomes});
  });
 }
@@ -17,8 +17,8 @@ exports.booky = (req,res,next)=>{
 }
 exports.fav = (req,res,next)=>{
   favmodel.getfav((favourite)=>{
-    Home.fetchAll((registerhomes)=>{
-     const favHomes= registerhomes.filter(house => favourite.includes(house.id));
+    Home.fetchAll().then(registerhomes=>{
+     const favHomes= registerhomes.filter(house => favourite.includes(house._id));
       res.render('Store/fav',{favHomes:favHomes});
   });
 });
@@ -46,7 +46,7 @@ exports.removefav=(req,res,next)=>{
 exports.getDetails = (req,res,next)=>{
  const homeId = req.params.homeId;
  console.log("Home Id is -> ",homeId);
- Home.findById(homeId, house=>{
+ Home.findById(homeId).then( house=>{
   if(!house){
     console.log("Home Not found");
   }else{
