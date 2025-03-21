@@ -26,7 +26,9 @@ exports.gethome=(req,res,next)=>{
 exports.addhome = (req,res,next)=>{
   const {housename,price,location,rating,imageUrl} = req.body;
   const home = new Home (housename,price,location,rating,imageUrl);
-  home.save();
+  home.save().then(()=>{
+    console.log("home saved")
+  });
 
   const registerhomes = Home.fetchAll((registerhomes)=>{
      res.render('/Host/Homedit',{registerhomes:registerhomes});
