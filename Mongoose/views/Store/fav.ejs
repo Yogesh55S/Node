@@ -1,0 +1,53 @@
+<%- include('../partials/head') %>
+</head>
+<body class="bg-gray-100">
+  <%- include('../partials/navbar') %>
+
+  <div class="container mx-auto mt-10">
+    <h2 class="text-gray-800 font-bold text-3xl text-center mb-8">Favourites List</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% if (typeof favHomes !== 'undefined' && favHomes.length > 0) { %>
+        <% favHomes.forEach(house => { %>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <!-- Image -->
+            <img class="w-full h-48 object-cover" src="<%= house.imageUrl %>" alt="<%= house.housename %>">
+            
+            <!-- Card Content -->
+            <div class="p-6">
+              <!-- House Name -->
+              <h3 class="font-bold text-xl mb-2 text-gray-800"><%= house.housename %></h3>
+              
+              <!-- Price -->
+              <p class="text-gray-700 text-base mb-2">
+                <span class="font-semibold">Price:</span> Rup<%= house.price %>
+              </p>
+              
+              <!-- Location -->
+              <p class="text-gray-700 text-base mb-2">
+                <span class="font-semibold">Location:</span> <%= house.location %>
+              </p>
+              
+              <!-- Rating -->
+              <p class="text-gray-700 text-base mb-4">
+                <span class="font-semibold">Rating:</span>
+                <% for (var i = 0; i < 5; i++) { %>
+                  <% if (i < house.rating) { %>
+                    <span class="text-yellow-500">&#9733;</span>
+                  <% } else { %>
+                    <span class="text-gray-300">&#9733;</span> 
+                  <% } %>
+                <% } %>
+              </p>
+            </div>
+            <form action="/favourite/delete/:<%= house._id%>" method="post">
+              <button type="submit" class="to-blue-500">Remove From Favourites</button>
+            </form>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p class="text-gray-700 text-base text-center col-span-3">No houses available.</p>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
