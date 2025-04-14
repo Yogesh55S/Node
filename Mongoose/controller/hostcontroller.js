@@ -25,12 +25,12 @@ exports.gethome=(req,res,next)=>{
 //---Add-page
 exports.addhome = (req,res,next)=>{
   const {housename,price,location,rating,imageUrl} = req.body;
-  const home = new Home (housename,price,location,rating,imageUrl);
+  const home = new Home ({housename,price,location,rating,imageUrl});
   home.save().then(()=>{
     console.log("home saved")
   });
 
-   Home.fetchAll().then(registerhomes=>{
+   Home.find().then(registerhomes=>{
      res.render('/Host/Homedit',{registerhomes:registerhomes});
     console.log(registerhomes);
   });
@@ -38,14 +38,22 @@ exports.addhome = (req,res,next)=>{
   
   exports.Postedithome = (req,res,next)=>{
     const {id,housename,price,location,rating,imageUrl} = req.body;
-    const home = new Home (housename,price,location,rating,imageUrl);
-    home.id = id;
-    home.save();
+    Home.findById(id).then(home=>{
+      home.housename = housename;
+      home.price = price;
+      home.location = location;
+      home.rating = rating;
+      home.imageUrl = imageUrl;
+      home.save().then((result)=>{
+        console.log("home updated",result);
+      }).catch((error)=>{
+        console.log("error",error);
+      })
     res.redirect("/home-edit");
-    }
-
+    });
+  };
 exports.list=(req,res,next)=>{
-   Home.fetchAll().then(registerhomes=>{
+   Home.find().then(registerhomes=>{
     res.render('Host/Homedit',{registerhomes:registerhomes});
  }); 
 }

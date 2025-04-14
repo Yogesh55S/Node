@@ -6,7 +6,7 @@ exports.home=(req,res,next)=>{
 }
 //--List -page
 exports.list = (req,res,next)=>{
- Home.fetchAll().then(registerhomes=>{
+ Home.find().then(registerhomes=>{
   res.render('Store/HomeList',{registerhomes:registerhomes});
  });
 }
@@ -17,7 +17,7 @@ exports.booky = (req,res,next)=>{
 }
 exports.fav = (req,res,next)=>{
   favmodel.getfav((favourite)=>{
-    Home.fetchAll().then(registerhomes=>{
+    Home.find().then(registerhomes=>{
      const favHomes= registerhomes.filter(house => favourite.includes(house._id));
       res.render('Store/fav',{favHomes:favHomes});
   });
