@@ -18,7 +18,7 @@ exports.booky = (req,res,next)=>{
 exports.fav = (req,res,next)=>{
   favmodel.getfav((favourite)=>{
     Home.find().then(registerhomes=>{
-     const favHomes= registerhomes.filter(house => favourite.includes(house._id));
+     const favHomes= registerhomes.filter(house => favourite.includes(house));
       res.render('Store/fav',{favHomes:favHomes});
   });
 });

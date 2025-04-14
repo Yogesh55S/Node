@@ -26,11 +26,11 @@ app.use((req, res, next) => {
 //----Server
 const PORT = 3001;
 const DBpath = "mongodb+srv://Yogesh55:Yash@cluster0.qyyx4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-mongoose.connect(DBpath).then (() => {
+mongoose.connect(DBpath).then(() => {
   console.log("Connected to MongoDB successfully!");
-   app.listen(PORT, () => {
-      console.log(`Your server started at http://localhost:${PORT}`); 
-    });
-}).catch(error =>{
-  console.log("error while connecting",error);
-})
+}).catch(error => {
+  console.log("Error connecting to MongoDB:", error);
+});
+app.listen(PORT, () => {
+  console.log(`Your server started at http://localhost:${PORT}`); 
+});

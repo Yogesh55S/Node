@@ -31,7 +31,7 @@ exports.addhome = (req,res,next)=>{
   });
 
    Home.find().then(registerhomes=>{
-     res.render('/Host/Homedit',{registerhomes:registerhomes});
+     res.render('Host/Homedit',{registerhomes:registerhomes});
     console.log(registerhomes);
   });
   }
@@ -60,7 +60,7 @@ exports.list=(req,res,next)=>{
 exports.deletehome = (req,res,next)=>{
   const homeId = req.params.homeId;
   console.log(homeId);
-  Home.deleteById(homeId,error=>{
+  Home.findByIdAndDelete(homeId,error=>{
     if(error){
       console.log("error",error);
     } 

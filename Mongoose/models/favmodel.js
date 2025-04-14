@@ -30,7 +30,7 @@ module.exports = class Fav {
   }
   static  deleteById(delhomeId,callback){
     Fav.getfav(Homes =>{
-      Homes = Homes.filter(house => house._id !== delhomeId !== homeId);
+      Homes = Homes.filter(house => house !== delhomeId);
       fs.writeFile(favdata, JSON.stringify(Homes), callback);
     })
     }
