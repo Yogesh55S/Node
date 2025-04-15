@@ -3,12 +3,12 @@ const Home = require("../models/file");
 //--That is for Home page rendering
 exports.gethome=(req,res,next)=>{
   console.log("Now you are on Add Page");
-    res.render('Host/Edit-Home',{
+    res.render('/Host/Edit-Home',{
       editing:false,
     });
   }
  
-  exports.getedithome=(req,res,next)=>{
+ exports.getedithome=(req,res,next)=>{
     const homeId = req.params.homeId;
     const editing = req.query.editing === 'true';
     Home.findById(homeId).then( house=>{
@@ -30,13 +30,13 @@ exports.addhome = (req,res,next)=>{
     console.log("home saved")
   });
 
-   Home.find().then(registerhomes=>{
+  /*  Home.find().then(registerhomes=>{
      res.render('Host/Homedit',{registerhomes:registerhomes});
     console.log(registerhomes);
-  });
+  }); */
   }
   
-  exports.Postedithome = (req,res,next)=>{
+ /*  exports.Postedithome = (req,res,next)=>{
     const {id,housename,price,location,rating,imageUrl} = req.body;
     Home.findById(id).then(home=>{
       home.housename = housename;
@@ -51,13 +51,14 @@ exports.addhome = (req,res,next)=>{
       })
     res.redirect("/home-edit");
     });
-  };
+  }; */
 exports.list=(req,res,next)=>{
    Home.find().then(registerhomes=>{
     res.render('Host/Homedit',{registerhomes:registerhomes});
+    console.log(registerhomes);
  }); 
 }
-exports.deletehome = (req,res,next)=>{
+/* exports.deletehome = (req,res,next)=>{
   const homeId = req.params.homeId;
   console.log(homeId);
   Home.findByIdAndDelete(homeId,error=>{
@@ -67,4 +68,4 @@ exports.deletehome = (req,res,next)=>{
      res.redirect("/home-edit");
   })
 
-  }
+  } */
